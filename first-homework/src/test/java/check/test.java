@@ -4,6 +4,7 @@ import check.SimpleFileReader;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,6 +38,19 @@ public class test {
         assertNotNull(content, "文件内容不应为空");
         System.out.println("文件内容: " + content);
 
+    }
+    @Test
+    void testPreprocessWithPartOfSpeechFilter() {
+        // 1. 创建 AdvancedTextPreprocessor 实例
+        SimpleTextPreprocessor preprocessor = new SimpleTextPreprocessor();
+
+        // 2. 输入文本
+        String text = "今天是星期天，天气晴，今天晚上我要去看电影。";
+
+        // 3. 调用预处理方法
+        List<String> result = preprocessor.preprocess(text);
+
+        System.out.println(result);
     }
 
 }
