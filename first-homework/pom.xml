@@ -5,13 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.atguigu</groupId>
-    <artifactId>first-homework</artifactId>
+    <artifactId>3123004155</artifactId>
     <version>1.0-SNAPSHOT</version>
 <dependencies>
     <dependency>
         <groupId>com.hankcs</groupId>
         <artifactId>hanlp</artifactId>
         <version>portable-1.8.4</version>
+    </dependency>
+    <!--Apache Commons Math 提供了丰富的数学工具，可以用于向量计算、矩阵运算-->
+
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-math3</artifactId>
+        <version>3.6.1</version>
     </dependency>
         <!-- JUnit 5 -->
         <dependency>
@@ -20,6 +27,12 @@
             <version>5.10.0</version>
             <scope>check.test</scope>
         </dependency>
+    <!--Smile 是一个高效的机器学习和自然语言处理库，支持 TF-IDF、余弦相似度等-->
+    <dependency>
+        <groupId>com.github.haifengl</groupId>
+        <artifactId>smile-core</artifactId>
+        <version>3.0.0</version>
+    </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -32,13 +45,28 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <archive>
+                        <manifest>
+                            <mainClass>check.Main</mainClass> <!-- 替换为你的主类 -->
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>
